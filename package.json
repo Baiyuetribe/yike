@@ -1,0 +1,30 @@
+{
+  "name": "yike",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "vue": "vite # 前端vue开发模式",
+    "vue_build": "vite build # 前端vue生产打包",
+    "gui": "tauri dev # GUI开发模式",
+    "dev": "cd src-tauri && cargo watch -q -w src -x check # rust dev模式",
+    "pre": "cd src-tauri && cargo watch -q -w src -x run # rust 后端运行模式",
+    "build": "tauri build # 打包",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1",
+    "@vueuse/sound": "^2.0.1",
+    "naive-ui": "^2.41.0",
+    "unplugin-auto-import": "^19.2.0",
+    "unplugin-vue-components": "^28.5.0",
+    "vite-auto-import-resolvers": "^3.2.1",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.3.1",
+    "@tauri-apps/cli": "^1"
+  }
+}
