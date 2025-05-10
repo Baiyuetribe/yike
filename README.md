@@ -1,4 +1,8 @@
-# YiKe 时钟
+<h1 align="center">YiKe 时钟</h1>
+
+<p align="center">
+  <img src="logo.png" alt="logo" style="width:180;height:180px">
+</p>
 
 桌面透明时间，带简易番茄计时器，可自由拖动。
 
@@ -9,12 +13,6 @@
 ## 下载
 
 [Download](https://github.com/Baiyuetribe/yike/releases)
-
-## WIP
-
-- [ ] LOGO 设计
-- [ ] Windows 适配
-- [ ] linux 适配
 
 ## 灵感来源
 

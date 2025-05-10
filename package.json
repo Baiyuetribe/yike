@@ -11,11 +11,11 @@
     "pre": "cd src-tauri && cargo watch -q -w src -x run # rust 后端运行模式",
     "build": "tauri build # 打包",
     "preview": "vite preview",
+    "icon": "tauri icon logo.png # 图标制作",
     "tauri": "tauri"
   },
   "dependencies": {
     "@tauri-apps/api": "^1",
-    "@vueuse/sound": "^2.0.1",
     "naive-ui": "^2.41.0",
     "unplugin-auto-import": "^19.2.0",
     "unplugin-vue-components": "^28.5.0",

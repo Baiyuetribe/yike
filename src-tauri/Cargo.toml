@@ -1,8 +1,8 @@
 [package]
 name = "tauri-app"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A time app"
+authors = ["baiyuetribe"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -15,7 +15,19 @@ tauri = { version = "1", features = [ "macos-private-api", "window-all", "shell-
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 window-shadows = "0.2.2"
+rodio = "0.20.1"
 
 [features]
 # This feature is used for production builds or when a dev server is not specified, DO NOT REMOVE!!
 custom-protocol = ["tauri/custom-protocol"]
+
+[lints.rust]
+warnings = "allow" # deny, warn, allow, or forbid
+
+[profile.release]
+opt-level = "z"     # 3 性能最高；s和z性能下降，体积减小；所以生成环境用3
+lto = true        # 启用 Link Time Optimization
+codegen-units = 1 # 控制编译单元的数量，这里设置为 1 可以减小体积
+debug = false     # 关闭调试信息
+panic = "abort"   # 在发生 panic 时立即终止程序，减小体积
+strip = "symbols" # 或者 "symbols" # 不加时489kb,debuginfo时442kb;symbols时只有362kb;symbols等价于strip

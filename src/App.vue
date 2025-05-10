@@ -15,6 +15,7 @@
 // import Greet from "./components/Greet.vue";
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { appWindow } from '@tauri-apps/api/window';
+import { invoke } from '@tauri-apps/api';
 // import { useSound } from '@vueuse/sound'
 // import s01 from '@/assets/end.aac' // 参考音色
 // import s01 from './assets/end.aac' // 参考音色
@@ -92,63 +93,17 @@ function startCountdown(minutes) {
   updateTime(); // 立即更新显示
 }
 
-// 播放结束提示音
-function playEndSound0() {
-  try {
-    // 创建音频对象
-    const audio = new Audio('@assets/end.aac');
 
-    // 设置音频参数
-    audio.volume = 1.0; // 音量设置为最大
-
-    // 播放音频
-    audio.play().catch(error => {
-      console.error('音频播放失败:', error);
-    });
-
-    // 可选：在音频播放结束后释放资源
-    audio.onended = () => {
-      audio.src = '';
-    };
-  } catch (error) {
-    console.error('创建音频对象失败:', error);
-  }
+const play_audio = async () => {
+  await invoke('play_audio')
 }
 
-
-function playEndSound() {
-  // 创建 AudioContext
-  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-  // 创建振荡器
-  const oscillator = audioContext.createOscillator();
-  const gainNode = audioContext.createGain();
-
-  // 设置音色
-  oscillator.type = 'sine'; // 正弦波
-  oscillator.frequency.value = 880; // 音高
-
-  // 设置音量
-  gainNode.gain.value = 0.5;
-
-  // 连接节点
-  oscillator.connect(gainNode);
-  gainNode.connect(audioContext.destination);
-
-  // 播放声音
-  oscillator.start();
-
-  // 0.5秒后停止
-  setTimeout(() => {
-    oscillator.stop();
-  }, 500);
-}
 // 倒计时结束通知
 function notifyCountdownEnd() {
   // 可以在这里添加通知逻辑
-  console.log('倒计时结束！');
+  // console.log('倒计时结束！');
   // 播放音频提示
-  playEndSound();
+  play_audio();
   resetToClockMode();
 }
 // 重置为时钟模式
@@ -207,7 +162,6 @@ const handleSelect = (key) => {
 
 // 在组件挂载时启动定时器
 onMounted(() => {
-  // playEndSound();
   // 立即更新一次时间
   updateTime();
 

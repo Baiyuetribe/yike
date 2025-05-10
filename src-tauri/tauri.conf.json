@@ -6,7 +6,7 @@
     "distDir": "../.vite"
   },
   "package": {
-    "productName": "yike",
+    "productName": "一刻",
     "version": "0.0.0"
   },
   "tauri": {
